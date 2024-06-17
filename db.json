@@ -4,6 +4,7 @@
     { "id": 2, "name": "Lucy", "birthdate": "1985-08-22" },
     { "id": 3, "name": "Mark", "birthdate": "2000-01-30" },
     { "id": 4, "name": "Anna", "birthdate": "1995-12-10" },
-    { "id": 5, "name": "Tom", "birthdate": "1988-03-05" }
+    { "id": 5, "name": "Tom", "birthdate": "1988-03-05" },
+    { "id": 6, "name": "Sofia", "birthdate": "1978-06-05" }
   ]
 }

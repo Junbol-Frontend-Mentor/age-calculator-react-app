@@ -1,10 +1,12 @@
-import { createContext, useState, useEffect, useContext } from 'react'; // Import necessary hooks and functions from React
+import { createContext, useState, useEffect} from 'react'; // Import necessary hooks and functions from React
+import PropTypes from 'prop-types'; // Import PropTypes for prop validation
 
 // Create a context for user data
 const UserContext = createContext(null); // Initialize context with null as the default value argument.indicating that no default value is provided. This will be overridden by the UserProvider.
-// The createContext function is used to create a Context object. 
+// The createContext function is used to create a Context object.
 // This context will be used to share the user data across the application without prop drilling.
 
+// ❓ here I need to oad a comment how the UserContext object is related to the UserProvider to stop PropDrilling
 
 // Create a provider component that wraps the application and provides user data
 export const UserProvider = ({ children }) => {
@@ -17,7 +19,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     // Using useEffect to perform side-effects, such as fetching data, when the component mounts
 
-    fetch('/api/users') //  is a HTTP GET request by default. Fetching user data from the API endpoint. Sends a GET request to the specified endpoint to retrieve user data.This will return a Promise which will become the 'response' object
+    fetch('http://localhost:5000/users')//Update the URL to point to the correct json-server endpoint. This is a HTTP GET request by default. Fetching user data from the API endpoint. Sends a GET request to the specified endpoint to retrieve user data.This will return a Promise which will become the 'response' object
       .then((response) => response.json()) // Parsing the JSON response. The Response object contains information about the response, including headers, status, and the body. To read the body of the response, you need to call a method on the Response object, such as .json(), The .json() method reads the body of the response and parses it as JSON, returning a Promise that resolves to the parsed JSON data.
       .then((data) => setUsers(data)) //  The 'data' parameter placeholder contains the parsed JSON data promise. Set the parsed data to the 'users' state. The data here is the parsed JSON from the fetch response. The name 'data' is a placeholder name it could be called 'responseData'. When you chain .then() calls, each .then() receives the resolved value of the Promise returned by the previous .then().
       .catch((error) => console.error('Error fetching users:', error)); // Log any errors  during the fetch process to the console
@@ -29,11 +31,14 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the UserContext
-export const useUserContext = () => {
-  // This hook allows functional components to access the UserContext easily
-  return useContext(UserContext); // useContext retrieves the current value of UserContext
+// Define prop types for UserProvider
+/* PropTypes is a way to document and validate the props your components receive, which can help catch bugs and improve code readability. While it's not strictly necessary to use PropTypes, especially in small or simple projects, it can be very helpful in larger projects or when working in teams to ensure that components receive the correct data types. It is especially useful during development to catch potential issues early. */
+UserProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  // This ensures that 'children' is a required prop and should be of type 'node'.
 };
+
+export default UserContext; // Export the UserContext
 
 //-----NOTES ON CREATING THE RESTful API: ---------------------------------------
 // fetch('/api/users') Explanation:

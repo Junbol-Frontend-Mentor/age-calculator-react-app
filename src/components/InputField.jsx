@@ -43,7 +43,6 @@ function InputField({ label, value, onChange, onBlur, error }) {
         color="black"
         backgroundColor="white"
         border="3px solid"
-        borderColor="lightgrey"
         _hover={{ borderColor: 'purple' }}
         _focus={{ outline: 'none', borderColor: 'purple' }}
         _invalid={{ borderColor: 'red' }} // Style for invalid input

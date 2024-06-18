@@ -1,0 +1,1 @@
+*,*:before,*:after{margin:0;padding:0;box-sizing:border-box}body{margin:0;padding:0;box-sizing:border-box}@keyframes spinUp{0%{transform:translateY(100%);opacity:0}50%{transform:translateY(-20%);opacity:.5}to{transform:translateY(0);opacity:1}}

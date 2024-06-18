@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://<username>.github.io/<repository-name>",
+  "homepage": "https://junbol-frontend-mentor.github.io/age-calculator-react-app/",
   "scripts": {
     "dev": "vite",
     "start:api": "json-server --watch db.json --port 5000",

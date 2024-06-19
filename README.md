@@ -41,8 +41,8 @@ This is a solution to the [Expenses chart component challenge on Frontend Mentor
 
 ### Links
 
-- Solution URL: (https://github.com/Junbol-Frontend-Mentor/news-homepage)
-- Live Site URL: (https://junbol-frontend-mentor.github.io/news-homepage/)
+- Solution URL: (https://github.com/Junbol-Frontend-Mentor/age-calculator-react-app)
+- Live Site URL: (http://localhost:5173/age-calculator-react-app/)
 
 ## My process
 

@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect} from 'react'; // Import necessary hooks and functions from React
+import { createContext, useState, useEffect } from 'react'; // Import necessary hooks and functions from React
 import PropTypes from 'prop-types'; // Import PropTypes for prop validation
 
 // Create a context for user data
@@ -19,7 +19,7 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     // Using useEffect to perform side-effects, such as fetching data, when the component mounts
 
-    fetch('http://localhost:5000/users')//Update the URL to point to the correct json-server endpoint. This is a HTTP GET request by default. Fetching user data from the API endpoint. Sends a GET request to the specified endpoint to retrieve user data.This will return a Promise which will become the 'response' object
+    fetch('https://age-calculator-json-server-3b392eeacf45.herokuapp.com/users') //Update the URL to point to the correct json-server endpoint. This is a HTTP GET request by default. Fetching user data from the API endpoint. Sends a GET request to the specified endpoint to retrieve user data.This will return a Promise which will become the 'response' object
       .then((response) => response.json()) // Parsing the JSON response. The Response object contains information about the response, including headers, status, and the body. To read the body of the response, you need to call a method on the Response object, such as .json(), The .json() method reads the body of the response and parses it as JSON, returning a Promise that resolves to the parsed JSON data.
       .then((data) => setUsers(data)) //  The 'data' parameter placeholder contains the parsed JSON data promise. Set the parsed data to the 'users' state. The data here is the parsed JSON from the fetch response. The name 'data' is a placeholder name it could be called 'responseData'. When you chain .then() calls, each .then() receives the resolved value of the Promise returned by the previous .then().
       .catch((error) => console.error('Error fetching users:', error)); // Log any errors  during the fetch process to the console

@@ -68,15 +68,7 @@ function App() {
 
   // Function to validate all inputs
   const validateInputs = () => {
-    const isValid = validateField('day', day) && validateField('month', month) && validateField('year', year);
-    if (isValid) {
-      const birthDate = new Date(`${year}-${month}-${day}`);
-      if (birthDate > new Date()) {
-        setErrors({ ...errors, year: 'Only past dates are allowed' }); // ✅ Set error for future dates
-        return false;
-      }
-    }
-    return isValid;
+    return validateField('day', day) && validateField('month', month) && validateField('year', year);
   };
 
   // Function to calculate age based on birth date
@@ -206,7 +198,7 @@ function App() {
           >
             Age Calculator
           </Flex>
-          <Flex mb="3rem" width="100%" maxHeight="14rem" justifyContent={'space-between'} bg="black" p="1rem" borderRadius="5px">
+          <Flex mb="3rem" width="100%" maxHeight="14rem" justifyContent={'space-between'} bg="black" p="1rem"   borderRadius="5px">
             <InputField
               label="DAY"
               value={day}

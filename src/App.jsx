@@ -140,7 +140,7 @@ function App() {
   // Handle user name click
   const handleUserClick = (user) => {
     // Clear the error state
-    setErrors({ day: '', month: '', year: '' }); // ✅ Clear the errors
+    setErrors({ day: '', month: '', year: '' }); // ✅ Clear the errors when user clicks a name
     const [year, month, day] = user.birthdate.split('-'); // Split the birthdate string
     setDay(day);
     setMonth(month);

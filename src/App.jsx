@@ -31,6 +31,9 @@ function App() {
   // Function to validate individual fields
   const validateField = (name, value) => {
     let newErrors = { ...errors };
+    const today = new Date();
+    const currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    const inputDate = new Date(year, month - 1, day);
 
     if (name === 'day') {
       if (value === '') {
@@ -62,21 +65,25 @@ function App() {
       }
     }
 
+    if (name === 'day' || name === 'month' || name === 'year') {
+      if (inputDate > currentDate) {
+        newErrors.day = 'Only past dates are allowed'; // 🟢 Set error for future dates in the day field
+        newErrors.month = 'Only past dates are allowed'; // 🟢 Set error for future dates in the month field
+        newErrors.year = 'Only past dates are allowed'; // 🟢 Set error for future dates in the year field
+      } else {
+        if (newErrors.day === 'Only past dates are allowed') newErrors.day = '';
+        if (newErrors.month === 'Only past dates are allowed') newErrors.month = '';
+        if (newErrors.year === 'Only past dates are allowed') newErrors.year = '';
+      }
+    }
+
     setErrors(newErrors);
     return !Object.values(newErrors).some((error) => error !== '');
   };
 
   // Function to validate all inputs
   const validateInputs = () => {
-    const isValid = validateField('day', day) && validateField('month', month) && validateField('year', year);
-    if (isValid) {
-      const birthDate = new Date(`${year}-${month}-${day}`);
-      if (birthDate > new Date()) {
-        setErrors({ ...errors, year: 'Only past dates are allowed' }); // ✅ Set error for future dates
-        return false;
-      }
-    }
-    return isValid;
+    return validateField('day', day) && validateField('month', month) && validateField('year', year);
   };
 
   // Function to calculate age based on birth date
@@ -206,7 +213,7 @@ function App() {
           >
             Age Calculator
           </Flex>
-          <Flex mb="3rem" width="100%" maxHeight="14rem" justifyContent={'space-between'} bg="black" p="1rem" borderRadius="5px">
+          <Flex mb="3rem" width="100%" maxHeight="14rem" justifyContent={'space-between'} bg="black" p="1rem"   borderRadius="5px">
             <InputField
               label="DAY"
               value={day}
